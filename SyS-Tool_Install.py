@@ -4,6 +4,13 @@ import os
 import subprocess
 import platform
 import time
+
+#----------------------------------------------------------------
+
+Version = "SyS-Tool - NesAnTime (Version 1.67)"
+
+#-----------------------------------------------------------------
+
 def clear():
     sistema = platform.system()
     if sistema == "Windows":
@@ -37,13 +44,17 @@ def Opc_Twilio():
         reverse(seg=3)
         subprocess.run(['python', 'Scritps/Update/Create_SmS_Twilio.py'])
 
+def Opc_APK():
+    clear()
+    subprocess.run(['python', 'Scritps/Tools/CreateAndroid.py'])
+
 
 #_____________________________________________________________________________________________________________
 def Update():
     clear()
     subprocess.run(['python', 'Scritps/Update/Update.py'])
-
-
+    clear()
+    
 def Start():
     clear()
     reverse(seg=0.2)
@@ -67,6 +78,7 @@ def Start():
     ruta_txt = os.path.join('Scritps/allFiles/', archivo_txt)
 
     Barra(desc="Analizando Paquetes...")
+    Update()
 
     if os.path.exists(ruta_txt):
         print("\nPaquetes existentes, Herramienta Sin Errores!")
@@ -76,6 +88,8 @@ def Start():
 
     else:
         print("\nLa Herramienta se a ejecutado por primera vez...")
+        with open('Scritps/allFiles/Install.txt', 'w') as file:
+            file.write(Version)
         print("Se Realizara Una Comprobacion de las Dependencias del Dispositivo...")
         reverse(seg=3)
         subprocess.run(['python', 'Scritps/Update/Depend_Update.py'])
@@ -96,17 +110,17 @@ def Main():
     print("░  ░  ░  ▒ ▒ ░░  ░  ░  ░          ░      ░ ░ ░ ▒  ░ ░ ░ ▒    ░ ░   ")
     print("      ░  ░ ░           ░                     ░ ░      ░ ░      ░  ░")
     print("         ░ ░                                                       ")
-    print("\n SyS-Tool - NesAnTime (Version 1.5)\n")
+    print(f"\n {Version} \n")
 
     print("__________ Menu De Opciones __________")
     print("[1] Ingeneria Inversa (Reverb Shell, Tools)")
     print("[2] Ingeneria Social (SMS, CORREOS)")
     print("[3] Cerrar Sysnes")
     print("----------------------------------------------")
-    print("[99] Update SysTool")
+    print("[4] Update SysTool")
     
     opc = int(input("\n-- Ingrese La Opcion: "))
-    while (opc < 1) or (opc > 3):
+    while (opc < 1) or (opc > 4):
         print("Error. La Opcion No esta Disponible :(")
         opc = int(input("-- Ingrese Nuevamente La Opcion: "))
 
@@ -126,8 +140,7 @@ def Main():
                 opc1 = int(input("--- Ingrese Nuevamente La Opcion: "))
 
             if opc1 == 1:
-                clear()
-                #Añadir Funcion
+                Opc_APK()
             elif opc1 == 2:
                 clear()
                 #Añadir Funcion
@@ -184,7 +197,7 @@ def Main():
                         clear()
                         #Ingresa Su Funcion
     
-    elif opc == 99:
+    elif opc == 4:
         Update()
     else:
         print("Programa ha Sido Cerrado ")
