@@ -1,4 +1,5 @@
 #Programa Creado Por NesAnTime
+from colorama import init, Fore, Style
 from twilio.rest import Client
 from tqdm import tqdm
 import os
@@ -13,15 +14,12 @@ def clear():
         os.system("cls")
     elif sistema == "Linux":
         subprocess.run(["clear"])
-    else:
-        print("Este Sistema No Posee Mas Soporte")
 def reverse(seg):
     time.sleep(seg)
 def Barra(desc):
     lista_de_elementos = range(100)
     for elemento in tqdm(lista_de_elementos, desc):
         time.sleep(0.1)
-
 #------------------------------------------------------------------------------------------------------
 
 def Sub_Twilio(side, Token, NumATA, Num, mesg):
@@ -127,24 +125,27 @@ def Main():
             print("Payload Finalizado...")
 
 
-clear()
-print("*** Iniciando Gestor De SMS *** ")
-print("Verificando Cuentas Registradas...")
-reverse(seg=2)
-directorio = 'Scritps/cache/Acconts_sms/'
-archivos_encontrados = Todas_Cuentas(directorio)
 
-if archivos_encontrados:
-    print("\n --- Cuentas Encontradas:")
-    x = 1
-    for cuentas in archivos_encontrados:
-        print("|",x,"|",cuentas)
-        Cuentass[x] = cuentas
-        x = x + 1
+clear()
+print(Fore.BLUE + "*** Iniciando Gestor De SMS *** ")
+print(Fore.GREEN + "[!] Verificando Cuentas Registradas...")
+reverse(seg=1)
+directorio = 'Scritps/cache/Acconts_sms/'
+archit = Todas_Cuentas(directorio)
+if os.path.exists(directorio):
+    if archit:
+        print(Fore.CYAN + "\n --- Cuentas Encontradas:")
+        x = 1
+        for cuentas in archit:
+            print("|",x,"|",cuentas)
+            Cuentass[x] = cuentas
+            x = x + 1
+    else:
+        print("No se encontraron Cuentas!")
+        subprocess.run(['python', 'Scritps/Update/Create_SmS_Twilio.py'])
+    x = x - 1
 else:
-    print("No se encontraron Cuentas!")
-    subprocess.run(['python', 'Scritps/Update/Create_SmS_Twilio.py'])
-x = x - 1
+    print(Fore.RED + "[!] Error. No Hay Cuentas Existentes!")
 
 opc = int(input("\nIngresa El Numero de la Cuenta: "))
 while (opc <= 0) or (opc > x):

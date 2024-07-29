@@ -1,1 +1,1 @@
-Version = "SyS-Tool - NesAnTime (Version 1.67)"
+SyS-Tool - NesAnTime (Version 2.0)
