@@ -63,7 +63,7 @@ try:
     print(Fore.CYAN + Style.DIM + "***______ Informacion Y Detalles ______***")
     print(f"{Fore.RED}Nombre: {Fore.RESET + name}.apk")
     print(f"{Fore.RED}IP: {Fore.RESET + direccionIP}")
-    print(f"{Fore.RED}PORT: {Fore.RESET + port}")
+    print(f"{Fore.RED}PORT: {Fore.RESET + str(port)}")
     info = input(f"\n {Fore.YELLOW}[Create APK] - [!] {Fore.RESET}Para mas Informacion, Escriba (info): ")
     if info == "info":
         webbrowser.open("https://nesantimeproyect.blogspot.com/p/funcion-de-persistencia-en-un-payload.html")
