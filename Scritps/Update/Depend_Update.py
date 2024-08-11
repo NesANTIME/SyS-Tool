@@ -21,28 +21,24 @@ def Barra(desc):
     lista_de_elementos = range(20)
     for elemento in tqdm(lista_de_elementos, desc):
         time.sleep(0.1)
-def exe(comando):
-    try:
-        resultado = subprocess.run(comando, shell=True, check=True, stdout=subprocess.PIPE, stderr=subprocess.PIPE)
-        print(resultado.stdout.decode())
-    except subprocess.CalledProcessError as e:
-        print(f"Error ejecutando el comando: {e.stderr.decode()}")
 init(autoreset=True)
+
+List = []
 #____________________________________________________________________________________________________
 def create_txt():
-    ruta_txt = os.path.join("Scritps/allFiles/")
-    file_path = os.path.join(ruta_txt, 'Execute.txt')
+    file_path = os.path.join(os.path.join("Scritps/allFiles/"), 'Execute.txt')
     with open(file_path, 'w') as file:
         caden = ''.join(random.choices(string.ascii_letters + string.digits, k=90))
         file.write(caden + "- SySTool.Nesantime ")
 
 #Dependencias...
 def Rel_Twilio():
+    #Invalido
     try:
         subprocess.check_call([sys.executable, '-m', 'pip', 'show', 'twilio'])
         return True
     except subprocess.CalledProcessError as e:
-        print(f"{Fore.RED}[!] No se Encuentra Instalado Twilio: {e}")
+        List.append("")
         return False
     except Exception as e:
         print(f"{Fore.RED}[!] Se ha producido un error inesperado: {e}")
@@ -50,6 +46,7 @@ def Rel_Twilio():
 
 #Installer...
 def installer_Twilio():
+    #Invalido
     try:
         print(Fore.GREEN + Style.DIM + "[!] Se Iniciara La Instalacion...")
         subprocess.run(['pip3', 'install', 'twilio'], check=True)
@@ -98,4 +95,5 @@ def Main():
         print("Iniciando el Payload...")
         clear()
 
-Main()
+#Main()
+create_txt()

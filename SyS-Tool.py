@@ -8,9 +8,8 @@ import time
 import webbrowser
 
 #----------------------------------------------------------------
-Version = "SyS-Tool - NesAnTime (Version 2.0)"
+Version = "SyS-Tool - NesAnTime (Version 2.5)"
 #-----------------------------------------------------------------
-
 def clear():
     sistema = platform.system()
     if sistema == "Windows":
@@ -24,36 +23,23 @@ def Barra(desc):
     for elemento in tqdm(lista_de_elementos, desc):
         time.sleep(0.1)
 def job():
+    reverse(seg=1)
+    webbrowser.open("https://nesantimeproyect.blogspot.com/2024/08/systool-version-25.html")
     with open(os.path.join('Scritps/allFiles/', 'NewUpdate.txt'), 'r') as archivo:
         contenid = archivo.read()
         return contenid
 init(autoreset=True)
 #-------------------------------------------------------------------------------------------------------------
-def Opc_Twilio():
-    print(f"\n{Fore.GREEN}{Style.DIM}[!] Comprobando Existencia De Cuentas! ")
-    reverse(seg=1)
-    ruta_txt = os.path.join('Scritps/allFiles/', 'SMS_Twilio.txt')
-    if os.path.exists(ruta_txt):
-        print(Fore.GREEN + "[!] Cuentas ¡Existentes!")
-        reverse(seg=1)
-        with open(ruta_txt, 'r') as f:
-            clear()
-            reverse(seg=1.5)
-            subprocess.run(['python', 'Scritps/Tools/SmSTwilio.py'])
-    else:
-        print(Fore.RED + "\n[!] ¡No se Encontro Ninguna Cuenta Existente! ")
-        print("A continuacion, Debera Registrar Una Cuenta API a Ultilizar...")
-        reverse(seg=1.5)
-        subprocess.run(['python', 'Scritps/Update/Create_SmS_Twilio.py'])
-
 def Opc_APK():
     clear()
     subprocess.run(['python', 'Scritps/Tools/CreateAndroid.py'])
 
 def Opc_BAT():
     clear()
-    subprocess.run(['python', 'Scritps/Tools/CreateBAT.py'])
+    subprocess.run(['python', 'Scritps/Tools/CreateEXE.py'])
 
+def Opc_HostProxy():
+    subprocess.run(["python", "Scritps/Tools/HostProxy.py"])
 
 #_____________________________________________________________________________________________________________
 def Update():
@@ -63,7 +49,6 @@ def Update():
     else:
         return False
     
-
 def Start():
     clear()
     reverse(seg=0.2)
@@ -124,11 +109,12 @@ def Main(Vert):
     print(f"{Fore.GREEN}{Vert}")
 
     print(f"{Style.BRIGHT}{Fore.BLUE}__________ Menu De Opciones __________")
-    print(f"{Style.DIM}{Fore.BLUE}[1] {Fore.RESET}{Style.RESET_ALL}Ingeneria Inversa (Reverb Shell, Tools)")
-    print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL}Ingeneria Social (SMS, CORREOS)")
-    print(f"{Style.DIM}{Fore.BLUE}[3] {Fore.RESET}{Style.RESET_ALL}Cerrar Sysnes")
+    print(f"{Style.DIM}{Fore.BLUE}[1] {Fore.RESET}{Style.RESET_ALL}Create Payloads ")
+    print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL}Ingeneria Social ")
+    print(f"{Style.DIM}{Fore.BLUE}[3] {Fore.RESET}{Style.RESET_ALL}¿Ayuda?")
+    print(f"\n{Style.DIM}{Fore.BLUE}[4] {Fore.RESET}{Style.RESET_ALL}Cerrar Sysnes")
     opc = int(input(f"\n{Fore.YELLOW}-- {Fore.RESET}Ingrese La Opcion: "))
-    while (opc < 1) or (opc > 3):
+    while (opc < 1) or (opc > 4):
         print(Fore.RED + "[!] Error. La Opcion No esta Disponible :(")
         opc = int(input(f"{Fore.YELLOW}-- {Fore.RESET}Ingrese Nuevamente La Opcion: "))
 
@@ -137,7 +123,7 @@ def Main(Vert):
         print(f"\n{Style.BRIGHT}{Fore.BLUE}Ingeneria Inversa - Creacion de Software (Basico)")
         print("\n---------- ¿Que Operacion Desea Realizar? ----------\n")
         print(f"{Style.DIM}{Fore.BLUE}[1] {Fore.RESET}{Style.RESET_ALL}- Crear Archivo (.Apk)")
-        print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL}- Crear Archivo (.bat)")
+        print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL}- Crear Archivo (.Exe)")
         print(f"{Style.DIM}{Fore.YELLOW}[99] {Fore.RESET}{Style.RESET_ALL} - Atras\n")
         opc1 = int(input(f"{Fore.YELLOW}--- {Fore.RESET}Ingrese La Opcion: "))
         if opc1 == 99:
@@ -154,63 +140,35 @@ def Main(Vert):
 
     elif (opc == 2):
         clear()
-        print(f"\n{Style.BRIGHT}{Fore.BLUE}Ingeneria Social (Version 1.2)\n")
+        print(f"\n{Style.BRIGHT}{Fore.BLUE}Tools de Ingeneria Social (Version 2.0)\n")
         print("\n---------- ¿Que Operacion Desea Realizar? ----------\n")
-        print(f"{Style.DIM}{Fore.BLUE}[1] {Fore.RESET}{Style.RESET_ALL}Enviar SMS...")
-        print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL}Enviar Correos...")
-        print(f"{Style.DIM}{Fore.YELLOW}[99] {Fore.RESET}{Style.RESET_ALL} - Atras\n")
+        print(f"{Style.DIM + Fore.BLUE}[1] {Fore.RESET + Style.RESET_ALL}Host-Proxy")
+        print(f"{Style.DIM + Fore.BLUE}[2] {Fore.RESET + Style.RESET_ALL}Enviar Correos...")
+        print(f"{Style.DIM + Fore.BLUE}[88] {Fore.RESET + Style.RESET_ALL} ¿Informacion Sobre Las Tools?")
+        print(f"{Style.DIM + Fore.YELLOW}[99] {Fore.RESET + Style.RESET_ALL} - Atras\n")
         opc2 = int(input(f"{Fore.YELLOW}--- {Fore.RESET}Ingrese La Opcion: "))
         if opc2 == 99:
             Main(Vert)
+        elif opc2 == 88:
+            print()
+            #SIN WEB
         else:
             while (opc2 < 1) or (opc2 > 2):
                 print(Fore.RED + "[!] Error. La Opcion No esta Disponible :(")
                 opc2 = int(input(f"{Fore.YELLOW}--- {Fore.RESET}Ingrese Nuevamente La Opcion: "))
             
             if opc2 == 1:
-                clear()
-                print(f"\n{Style.BRIGHT}{Fore.BLUE}Ingeneria Social (Version 1.2)\n")
-                print(Fore.CYAN + Style.DIM + "¿ Enviar SMS ?\n")
-                print("-- La Herramienta Es Compatible Solo Con los Siguientes Servicios SMS: \n")
-                print(f"{Style.DIM}{Fore.BLUE}   [1] {Fore.RESET}{Style.RESET_ALL}Twilio (Debe Tener Una Cuenta En esta Plataforma)")
-                print(f"{Style.DIM}{Fore.YELLOW}   [99] {Fore.RESET}{Style.RESET_ALL} - Atras\n")
-                opc3 = int(input(f"{Fore.YELLOW}--- {Fore.RESET}Ingrese La Opcion: "))
-                if opc3 == 99:
-                    Main(Vert)
-                else:
-                    while (opc3 < 1) or (opc3 > 1):
-                        print(Fore.RED + "[!] Error. La Opcion No esta Disponible :(")
-                        opc3 = int(input(f"{Fore.YELLOW}--- {Fore.RESET}Ingrese Nuevamente La Opcion: "))
-                    
-                    if opc3 == 1:
-                        clear()
-                        Opc_Twilio()
+                Opc_HostProxy()
                 
             elif opc2 == 2:
-                clear()
-                print(f"\n{Style.BRIGHT}{Fore.BLUE}Ingeneria Social (Version 1.2)\n")
-                print(Fore.CYAN + Style.DIM + "¿ Enviar Correos ?\n")
-                print("-- La Herramienta Es Compatible Solo Con los Siguientes Servicios De Correo: \n")
-                print(f"{Style.DIM}{Fore.BLUE}   [1] {Fore.RESET}{Style.RESET_ALL}Proton.me (Debe Tener Una Cuenta En esta Plataforma)")
-                print(f"{Style.DIM}{Fore.YELLOW}   [99] {Fore.RESET}{Style.RESET_ALL} - Atras\n")
-                opc4 = int(input(f"{Fore.YELLOW}--- {Fore.RESET}Ingrese La Opcion: "))
-                if opc4 == 99:
-                    Main(Vert)
-                else:
-                    while (opc4 < 1) or (opc4 > 1):
-                        print(Fore.RED + "[!] Error. La Opcion No esta Disponible :(")
-                        opc4 = int(input(f"{Fore.YELLOW}--- {Fore.RESET}Ingrese Nuevamente La Opcion: "))
-                    
-                    if opc4 == 1:
-                        clear()
-                        print(Fore.GREEN + "[!] Se va Abrir La Web Oficial De Proton.me")
-                        reverse(seg=2)
-                        webbrowser.open("https://proton.me/")
-                        input(Fore.YELLOW + "Presione Enter para Continuar...")
+                #Proceso Añadir
+                print()
+    elif (opc == 3):
+        #Anadir Funcion
+        print()
     
     else:
         print(Fore.GREEN + "[!] Programa ha Sido Cerrado ")
         reverse(seg=2)
    
-
 Start()
