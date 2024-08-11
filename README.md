@@ -1,7 +1,7 @@
 # SyS-Tool
 Herramienta Automática en la creación y asistencia en pruebas de penetración basicas
 
-![Version](https://img.shields.io/badge/version-1.20-blue)
+![Version](https://img.shields.io/badge/version-2.5-blue)
 ![Desarrollador](https://img.shields.io/badge/NesAnTime-green)
 
 <br></br>
