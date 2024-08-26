@@ -1,40 +1,54 @@
 # SyS-Tool
-Herramienta Automática en la creación y asistencia en pruebas de penetración basicas
-
+Herramienta Automática en la creación y asistencia en pruebas de penetración básicas <br></br>
 ![Version](https://img.shields.io/badge/version-3.2-blue)
 ![Desarrollador](https://img.shields.io/badge/NesAnTime-green)
 
-<br></br>
 ## Descripción
+SyS-Tool es una herramienta de línea de comandos multifuncional diseñada para tareas de ingeniería inversa y seguridad informática. Se centra en la creación de Payloads Básicos usando servicios como "MsfConsole" y "MsfVenom", para realizar pruebas de Penetración desde Kali Linux de manera rápida y sencilla.
 
-Herramienta Automática en la creación de Payloads Básicos usando servicios como "MsfConsole" y "MsfVenom", para realizar pruebas de Penetración Desde Kali Linux de manera rapida y sencilla.
-<br></br>
-SysTool Es una Herramienta que se centra en ser automatica, no en todos los sentidos pero ese es su punto. 
-<br></br>
-Nuestra Meta es Crear Una herramienta que facilite la creacion de Payloads Basicos o Avanzados Tanto para Android o Windows (Aunque Aun Seguimos Trabajando En Ello) 
+Tambien Estamos desarrollando Nuestras Propias Herramientas e Integrandolas en SyS-Tool.
 
-<br></br>
+## Características principales
+
+- Creación de payloads (APK y EXE).
+- Herramientas de ingeniería social, Como Host-Proxy.
+- Interfaz de usuario colorida y atractiva.
+  
+## Requisitos
+
+- Python 3.x
+- Módulos python requeridos: tqdm, colorama
+
 ## Instalación
-
 Instrucciones paso a paso sobre cómo instalar y ejecutar la herramienta.
-
 ```bash
-# Clona el repositorio
+# Clona el repositorio:
 git clone https://github.com/NesANTIME/SyS-Tool.git
 
-# Entra al directorio del proyecto
+# Entra al directorio del proyecto:
 cd SySTool
 
 # Ejecuta La Herramienta
 python SyS-Tool.py
 
-# NOTA: No te Preocupes por la Instalacion De Dependecias Nesesarias de antemano, SyStool Las Instala Por Ti.
+# NOTA: No te preocupes por la instalación de dependencias necesarias de antemano, SysTool las instala por ti.
 ```
-<br></br>
-## Modo de Uso
-El Menu de Systool Es muy Sencillo, Y se Puede Entender a Primera (Claro si tienes conocimientos previos). No te preocupes si eres novato, Esta Creada Para Centrarse En Esas Nesecidades...
 
-<br></br>
+## Modo de Uso
+El menú de SysTool es muy sencillo y se puede entender a primera vista (si tienes conocimientos previos). No te preocupes si eres novato, está creada para centrarse en esas necesidades.
+
+## Funcionalidades principales
+- Creación de Payloads:
+```
+- Para crear un APK: Create APK o create -a
+- Para crear un EXE: Create EXE o create -e
+```
+- Ingeniería Social
+```
+- Herramienta Host-Proxy: H Proxy o hostproxy
+```
+## Ayuda
+Use el comando help en cualquier momento para obtener más información sobre los comandos disponibles.
+
 ## Licencia
-No te Preocupes es de Codigo Abierto, Puedes Modificarlo y Usarlo a Tu Gusto de manera local.
-<br></br>
+Licencia De Uso Libre, Prohibido de Modificacion y Venta de este.
