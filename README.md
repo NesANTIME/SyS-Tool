@@ -1,7 +1,9 @@
 # SyS-Tool
 Herramienta Automática en la creación y asistencia en pruebas de penetración básicas <br></br>
-![Version](https://img.shields.io/badge/version-3.2-blue) - (https://nesantimeproyect.blogspot.com/2024/08/new-update-version-30-systool.html)
+![Version](https://img.shields.io/badge/version-3.2-blue)
 ![Desarrollador](https://img.shields.io/badge/NesAnTime-green)
+<br></br>
+Mas Informacion Sobre la Actualizacion Aplicada a SySTool: https://nesantimeproyect.blogspot.com/2024/08/new-update-version-30-systool.html
 
 ## Descripción
 SyS-Tool es una herramienta de línea de comandos multifuncional diseñada para tareas de ingeniería inversa y seguridad informática. Se centra en la creación de Payloads Básicos usando servicios como "MsfConsole" y "MsfVenom", para realizar pruebas de Penetración desde Kali Linux de manera rápida y sencilla.
