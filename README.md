@@ -11,7 +11,7 @@ Tambien Estamos desarrollando Nuestras Propias Herramientas e Integrandolas en S
 ## Características principales
 
 - Creación de payloads (APK y EXE).
-- Herramientas de ingeniería social, Como Host-Proxy.
+- Herramientas de ingeniería social, Como Host-Proxy (https://nesantimeproyect.blogspot.com/p/host-proxy.html).
 - Interfaz de usuario colorida y atractiva.
   
 ## Requisitos
