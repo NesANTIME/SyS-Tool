@@ -8,7 +8,7 @@ import time
 import argparse
 
 #----------------------------------------------------------------
-Version = "SyS-Tool - NesAnTime (Version 3.0)"
+Version = "SyS-Tool - NesAnTime (Version 3.2)"
 #-----------------------------------------------------------------
 def clear():
     sistema = platform.system()
