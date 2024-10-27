@@ -8,7 +8,7 @@ import time
 import argparse
 
 #----------------------------------------------------------------
-Version = "SyS-Tool - NesAnTime (Version 3.2)"
+Version = "SyS-Tool - NesAnTime (Version 4.0)"
 #-----------------------------------------------------------------
 def clear():
     sistema = platform.system()
@@ -16,17 +16,21 @@ def clear():
         os.system("cls")
     elif sistema == "Linux":
         subprocess.run(["clear"])
+
 def reverse(seg):
     time.sleep(seg)
+
 def Barra(desc):
     lista_de_elementos = range(40)
     for elemento in tqdm(lista_de_elementos, desc):
         time.sleep(0.1)
+
 def New_Update_create():
     reverse(seg=1)
     with open(os.path.join('Scritps/allFiles/', 'NewUpdate.txt'), 'r') as archivo:
         contenid = archivo.read()
         return contenid
+
 def Logo():
     print(f"\n {Fore.CYAN}[+] Creado Por NesAnTime [+] \n")
     print("  ██████▓██   ██▓  ██████       ▄▄▄█████▓ ▒█████   ▒█████   ██▓    ")
@@ -52,6 +56,11 @@ def Opc_EXE():
 def Opc_HostProxy():
     clear()
     subprocess.run(["python", "Scritps/Tools/HostProxy.py"])
+
+def Opc_SYSAircrack_ng():
+    clear()
+    subprocess.run(["python", "Scritps/Tools/SYS-Aircrack-ng.py"])
+
 
 #_____________________________________________________________________________________________________________
 def Update():
@@ -103,7 +112,6 @@ def Start():
         Start()
 
 
-
 def Main(Vert):
     clear()
     Logo()
@@ -113,10 +121,11 @@ def Main(Vert):
     print(f"{Style.BRIGHT}{Fore.BLUE}__________ Menu De Opciones __________")
     print(f"{Style.DIM}{Fore.BLUE}[1] {Fore.RESET}{Style.RESET_ALL}Create Payloads ")
     print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL}Ingeneria Social ")
-    print(f"{Style.DIM}{Fore.BLUE}[3] {Fore.RESET}{Style.RESET_ALL}¿Ayuda?")
-    print(f"\n{Style.DIM}{Fore.BLUE}[4] {Fore.RESET}{Style.RESET_ALL}Cerrar SysTool")
+    print(f"{Style.DIM}{Fore.BLUE}[3] {Fore.RESET}{Style.RESET_ALL}Auditoria Wifi ")
+    print(f"{Style.DIM}{Fore.BLUE}[4] {Fore.RESET}{Style.RESET_ALL}¿Ayuda?")
+    print(f"\n{Style.DIM}{Fore.BLUE}[5] {Fore.RESET}{Style.RESET_ALL}Cerrar SysTool")
     opc = int(input(f"\n{Fore.YELLOW}-- {Fore.RESET}Ingrese La Opcion: "))
-    while (opc < 1) or (opc > 4):
+    while (opc < 1) or (opc > 5):
         print(Fore.RED + "[!] Error. La Opcion No esta Disponible :(")
         opc = int(input(f"{Fore.YELLOW}-- {Fore.RESET}Ingrese Nuevamente La Opcion: "))
 
@@ -171,6 +180,31 @@ def Main(Vert):
                 input(Fore.YELLOW + "\nPresione Enter Para Continuar...")
                 OPC2()
         OPC2()
+
+    elif (opc == 3):
+        def OPC3():
+            clear()
+            Logo()
+            print(f"\n{Style.BRIGHT}{Fore.BLUE}Auditoria Wifi (Version-Base Aircrack-ng)\n")
+            Escrip3 = input(f"{Style.BRIGHT}[AuditoriaWIFI - SySTool] > {Style.NORMAL}")
+
+            if (Escrip3 == "Auditoria WIFI") or (Escrip3 == "auditoria wifi") or (Escrip3 == "A-WIFI") or (Escrip3 == "SYS Aircrack-ng") or (Escrip3 == "sys-aircrack-ng") or (Escrip3 == "SYS-AW"):
+                Opc_SYSAircrack_ng()
+            elif (Escrip3 == "help") or (Escrip3 == "Help"):
+                print("\n---------- ¿Ayuda? Estos Son los Comandos Que Puedes Usar ----------\n")
+                print(f"{Style.DIM}{Fore.BLUE}COMANDO: Auditoria WIFI, auditoria wifi, A-WIFI, SYS Aircrack-ng, sys-aircrack-ng, SYS-AW ){Fore.RESET}{Style.RESET_ALL}- Cargar SYS_Aircrack-ng")
+                print(f"{Style.NORMAL}{Fore.BLUE}¿Mas Informacion Sobre Nuestros Tools? {Fore.RESET}{Style.BRIGHT} COMANDO: {Style.NORMAL} Help Tool, help tool")
+                print(f"{Style.DIM}{Fore.YELLOW}COMANDO: Exit, exit {Fore.RESET}{Style.RESET_ALL} - Atras\n")
+                input(Fore.YELLOW + "\nPresione Enter Para Continuar...")
+                OPC3()
+            elif (Escrip3 == "Exit") or (Escrip3 == "exit"):
+                Main(Vert)
+            else:
+                print(Fore.RED + "[!] Error. El Comando ("+ Escrip3 +") NO esta Disponible o NO Existe :(")
+                print("Si Tienes Alguna Duda O Nesecitas Ayuda, Usa el Comando Help")
+                input(Fore.YELLOW + "\nPresione Enter Para Continuar...")
+                OPC3()
+        OPC3()
 
     else:
         print(Fore.GREEN + "[!] Programa ha Sido Cerrado ")
