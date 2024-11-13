@@ -4,7 +4,7 @@ import os
 import subprocess
 import platform
 import time
-import webbrowser
+import requests
 from colorama import init, Fore, Style
 init(autoreset=True)
 
@@ -48,31 +48,21 @@ Logo()
 print(Fore.BLUE + "SYS Aircrack-ng, Se a Cargado completamente. Para Buen uso de la herramienta debe conocer los conceptos basicos de la herramienta! \n")
 reverse(seg=3)
 
-print(Fore.GREEN + f"[!] Iniciando Modo Monitor, ¡Interfaz de red Estandar es (wlan0)!")
-Comand(comandCreation = f"sudo airmon-ng start wlan0")
+print(Fore.GREEN + f"[!] Descargando, ¡Tu RockYou Estara Disponible en Breves!")
 reverse(seg=2)
 
-print(Fore.GREEN + f"[!] Listando Redes WIFI disponibles!")
-reverse(seg=2)
-Comand(comandCreation = f"sudo airodump-ng wlan0mon")
+def download(link, name) :
+    resp = requests.get(link, stream=True)
+    tamaño = int(resp.headers.get('content-length', 0))
 
-bssid = input(f"{Fore.RED}[SYS-Create APK]{Fore.RESET + Fore.MAGENTA} --{Fore.RESET} Ingrese el BSSID: ")
-canal = int(input(f"{Fore.RED}[SYS-Create APK] {Fore.RESET + Fore.MAGENTA}- [!] {Fore.RESET}Ingrese El Canal: "))
+    with open(name, "wb") as archivo:
+        with tqdm(total=tamaño, unit="B", unit_scale=True, desc=name, ascii=True) as barra:
+            for datos in resp.iter_content(chunk_size=1024):
+                archivo.write(datos)
 
-clear()
-Logo()
-print(Fore.BLUE + "A Continuacion, Ingrese un Nombre para el .Cap\n")
-name = input(f"{Fore.RED}[SYS-Create APK]{Fore.RESET + Fore.MAGENTA} --{Fore.RESET} Proporcione un Nombre: ")
-reverse(seg=1.5)
+    barra.update(len(datos))
 
+link = "https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt"
+name = "RockYou.txt"
 
-clear()
-Logo()
-print(Fore.BLUE + "*** Iniciando Scanneo De WIFI ;) *** ")
-Comand(comandCreation = f"sudo airodump-ng -c {canal} --bssid {bssid} -w {name} wlan0mon")
-reverse(seg=1)
-
-wpa = input(f"{Fore.RED}[SYS-Create APK]{Fore.RESET + Fore.MAGENTA} --{Fore.RESET} Ingrese El WPA: ")
-clear()
-Comand(comandCreation = f"sudo aircrack-ng -b {wpa} -w Scritps/allFiles/SYS Aircrack-ng/rockyou.txt {name}.cap")
-
+download(link, name)

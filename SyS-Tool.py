@@ -186,14 +186,15 @@ def Main(Vert):
             clear()
             Logo()
             print(f"\n{Style.BRIGHT}{Fore.BLUE}Auditoria Wifi (Version-Base Aircrack-ng)\n")
+            print("Nesecitas Ayuda con Los Comandos Escribe --help")
             Escrip3 = input(f"{Style.BRIGHT}[AuditoriaWIFI - SySTool] > {Style.NORMAL}")
 
-            if (Escrip3 == "Auditoria WIFI") or (Escrip3 == "auditoria wifi") or (Escrip3 == "A-WIFI") or (Escrip3 == "SYS Aircrack-ng") or (Escrip3 == "sys-aircrack-ng") or (Escrip3 == "SYS-AW"):
+            if (Escrip3 == "download rockyou") or (Escrip3 == "Download Rockyou") or (Escrip3 == "DownloadRockyou") or (Escrip3 == "downloadrockyou"):
                 Opc_SYSAircrack_ng()
-            elif (Escrip3 == "help") or (Escrip3 == "Help"):
+            elif (Escrip3 == "-- help") or (Escrip3 == "--Help"):
                 print("\n---------- ¿Ayuda? Estos Son los Comandos Que Puedes Usar ----------\n")
-                print(f"{Style.DIM}{Fore.BLUE}COMANDO: Auditoria WIFI, auditoria wifi, A-WIFI, SYS Aircrack-ng, sys-aircrack-ng, SYS-AW ){Fore.RESET}{Style.RESET_ALL}- Cargar SYS_Aircrack-ng")
-                print(f"{Style.NORMAL}{Fore.BLUE}¿Mas Informacion Sobre Nuestros Tools? {Fore.RESET}{Style.BRIGHT} COMANDO: {Style.NORMAL} Help Tool, help tool")
+                print(f"{Style.DIM}{Fore.BLUE}COMANDO: download rockyou, Download Rockyou, DownloadRockyou, downloadrockyou {Fore.RESET}{Style.RESET_ALL}- DESCARGAR ROCKYOU")
+                print(f"\n{Style.NORMAL}{Fore.BLUE}¿Mas Informacion Sobre Nuestros Tools? {Fore.RESET}{Style.BRIGHT} COMANDO: {Style.NORMAL} Help Tool, help tool")
                 print(f"{Style.DIM}{Fore.YELLOW}COMANDO: Exit, exit {Fore.RESET}{Style.RESET_ALL} - Atras\n")
                 input(Fore.YELLOW + "\nPresione Enter Para Continuar...")
                 OPC3()
