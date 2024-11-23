@@ -5,24 +5,22 @@ import os
 import subprocess
 import platform
 import time
-import argparse
 
 #----------------------------------------------------------------
 Version = "SyS-Tool - NesAnTime (Version 4.0)"
-#-----------------------------------------------------------------
+#----------------------------------------------------------------
+
 def clear():
-    sistema = platform.system()
-    if sistema == "Windows":
+    if platform.system() == "Windows":
         os.system("cls")
-    elif sistema == "Linux":
+    elif platform.system() == "Linux":
         subprocess.run(["clear"])
 
 def reverse(seg):
     time.sleep(seg)
 
 def Barra(desc):
-    lista_de_elementos = range(40)
-    for elemento in tqdm(lista_de_elementos, desc):
+    for elemento in tqdm(range(40), desc):
         time.sleep(0.1)
 
 def New_Update_create():

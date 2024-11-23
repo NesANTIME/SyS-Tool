@@ -7,20 +7,18 @@ import time
 import requests
 from colorama import init, Fore, Style
 init(autoreset=True)
+rut = 'Scritps/allFiles/UsedRck.txt'
 
 def clear():
-    sistema = platform.system()
-    if sistema == "Windows":
+    if platform.system() == "Windows":
         os.system("cls")
-    elif sistema == "Linux":
+    elif platform.system() == "Linux":
         subprocess.run(["clear"])
-    else:
-        print("Este Sistema No Posee Mas Soporte")
+
 def reverse(seg):
     time.sleep(seg)
 def Barra(desc):
-    lista_de_elementos = range(10)
-    for elemento in tqdm(lista_de_elementos, desc):
+    for elemento in tqdm(range(10), desc):
         time.sleep(0.1)
 
 def Comand(Comando):
@@ -43,26 +41,73 @@ def Logo():
     print("         ░ ░                                                       ")
 #-----------------------------------------------------------------------------
 
-clear()
-Logo()
-print(Fore.BLUE + "SYS Aircrack-ng, Se a Cargado completamente. Para Buen uso de la herramienta debe conocer los conceptos basicos de la herramienta! \n")
-reverse(seg=3)
+def Main():
+    clear()
+    Logo()
+    print(Fore.BLUE + "Asistente de Auditoria WIFI\n")
+    reverse(seg=3)
 
-print(Fore.GREEN + f"[!] Descargando, ¡Tu RockYou Estara Disponible en Breves!")
-reverse(seg=2)
+    if not os.path.exists(rut):
+        print(f"{Fore.RED}[!] La Herramienta A Sido Iniciada Por Primera Vez, Se Descargara Los Complementos Nesesarios! .")
 
-def download(link, name) :
-    resp = requests.get(link, stream=True)
-    tamaño = int(resp.headers.get('content-length', 0))
+        file_path = os.path.join(os.path.join("Scritps/allFiles/"), 'UsedRck.txt')
+        with open(file_path, 'w') as file:
+            file.write("Cache execute AirCrack")
 
-    with open(name, "wb") as archivo:
-        with tqdm(total=tamaño, unit="B", unit_scale=True, desc=name, ascii=True) as barra:
-            for datos in resp.iter_content(chunk_size=1024):
-                archivo.write(datos)
+        Barra(desc="Descargando Complementos ")
+        print(f"\n{Fore.GREEN}[!] Completado")
+        clear()
+        Main()
+    
+    else:
+        print(Fore.CYAN + "*** Menu SYS-Crack ***")
+        print(f"{Style.DIM}{Fore.BLUE}[1] {Fore.RESET}{Style.RESET_ALL} Descargar RockYou")
+        print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL} Comandos Para Auditorias Wifi")
+        print(f"{Style.BRIGHT}{Fore.BLUE}[3] {Fore.RESET}{Style.RESET_ALL} Salir")
 
-    barra.update(len(datos))
+        opc = input("\n-- Ingrese Su Opcion: ")
+        if opc == "1":
+            clear()
+            print(Style.BRIGHT + "*** Menu Descargar RockYou ***")
+            print(f"{Style.DIM}{Fore.BLUE}[1] {Fore.RESET}{Style.RESET_ALL} Descargar RockYou (Version Estandar)")
+            print(f"{Style.DIM}{Fore.BLUE}[2] {Fore.RESET}{Style.RESET_ALL} Descargar RockYou (Version SyS-Tool)")
+            print(f"{Style.DIM}{Fore.BLUE}[3] {Fore.RESET}{Style.RESET_ALL} Descargar RockYou (Version 2024)")
+            print(f"{Style.BRIGHT}{Fore.BLUE}[3] {Fore.RESET}{Style.RESET_ALL} Salir")
 
-link = "https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt"
-name = "RockYou.txt"
+            opct = input("\n--- Ingrese Su Opcion: ")
+            if opct == "1":
+                print(Fore.GREEN + f"[!] Descargando, ¡Tu RockYou Estara Disponible en Breves!")
+                reverse(seg=2)
 
-download(link, name)
+                resp = requests.get("https://github.com/brannondorsey/naive-hashcat/releases/download/data/rockyou.txt", stream=True)
+                tamaño = int(resp.headers.get('content-length', 0))
+
+                with open("RockYou.txt", "wb") as archivo:
+                    with tqdm(total=tamaño, unit="B", unit_scale=True, desc="RockYou.txt", ascii=True) as barra:
+                        for datos in resp.iter_content(chunk_size=1024):
+                            archivo.write(datos)
+
+                barra.update(len(datos))
+
+                print(Fore.GREEN + "[!] DESCARGADO CON EXITO! ")
+            
+            elif opct == "2":
+                return
+            elif opct == "3":
+                return
+            elif opct == "4":
+                print(Fore.RED + "[!] Saliendo.. ")
+            else:
+                print(Fore.RED + "[!] Error. El Comando No existe! ")
+                Main()
+        
+        elif opc == "2":
+            return
+        
+        elif opc == "3":
+            print(Fore.RED + "[!] Saliendo.. ")
+        else:
+            print(Fore.RED + "[!] Error. El Comando No existe! ")
+            Main()
+
+Main()
